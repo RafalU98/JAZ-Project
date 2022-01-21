@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JazProjectApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JazProjectApplication.class, args);
+        SpringApplication
+                .run(JazProjectApplication.class, args);
     }
 
 }
