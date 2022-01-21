@@ -1,7 +1,10 @@
-package pl.edu.pjwstk.User;
+package pl.edu.pjwstk.User.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.edu.pjwstk.User.Model.User;
+import pl.edu.pjwstk.User.Repository.UserRepository;
+import pl.edu.pjwstk.User.Security.UserNotFoundException;
 
 import java.util.List;
 import java.util.Optional;

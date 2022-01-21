@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.User;
+package pl.edu.pjwstk.User.Security;
 
 public class UserNotFoundException extends Throwable {
     public UserNotFoundException(String message) {

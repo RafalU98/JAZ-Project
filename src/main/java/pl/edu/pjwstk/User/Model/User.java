@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.User;
+package pl.edu.pjwstk.User.Model;
 
 import javax.persistence.*;
 

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import pl.edu.pjwstk.User.UserRepository;
-import pl.edu.pjwstk.User.User;
+import pl.edu.pjwstk.User.Repository.UserRepository;
+import pl.edu.pjwstk.User.Model.User;
 
 import java.util.Optional;
 

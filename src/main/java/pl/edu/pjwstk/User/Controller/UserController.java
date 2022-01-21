@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.User;
+package pl.edu.pjwstk.User.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,11 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.edu.pjwstk.User.Model.User;
+import pl.edu.pjwstk.User.Security.UserNotFoundException;
+import pl.edu.pjwstk.User.Service.UserService;
 
 import java.util.List;
 
 @Controller
-public class UserController {
+public class
+UserController {
     @Autowired
     private UserService userService;
 
