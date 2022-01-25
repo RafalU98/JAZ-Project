@@ -2,29 +2,29 @@ package pl.edu.pjwstk.User.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.edu.pjwstk.User.Model.User;
-import pl.edu.pjwstk.User.Repository.UserRepository;
+import pl.edu.pjwstk.User.Model.Student;
+import pl.edu.pjwstk.User.Repository.StudentRepository;
 import pl.edu.pjwstk.User.Security.UserNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class StudentService {
 
-    @Autowired private UserRepository userRepository;
+    @Autowired private StudentRepository studentRepository;
 
-    public List<User> listAll() {
-        return (List<User>) userRepository
+    public List<Student> listAll() {
+        return (List<Student>) studentRepository
                 .findAll();
     }
 
-    public void save(User user) {
-        userRepository.save(user);
+    public void save(Student student) {
+        studentRepository.save(student);
     }
 
-    public User get(Integer id) throws UserNotFoundException {
-        Optional<User> result = userRepository.findById(id);
+    public Student get(Integer id) throws UserNotFoundException {
+        Optional<Student> result = studentRepository.findById(id);
         if (result.isPresent()) {
             return result.get();
         }
@@ -32,10 +32,10 @@ public class UserService {
     }
 
     public void delete(Integer id) throws UserNotFoundException {
-        Long count = userRepository.countById(id);
+        Long count = studentRepository.countById(id);
         if (count == null || count == 0) {
             throw new UserNotFoundException("Could not find anybody with this id" + id );
         }
-        userRepository.deleteById(id);
+        studentRepository.deleteById(id);
     }
 }

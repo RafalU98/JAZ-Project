@@ -1,9 +1,11 @@
 package pl.edu.pjwstk.User.Repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import pl.edu.pjwstk.User.Model.User;
 
-public interface
-UserRepository extends CrudRepository<User, Integer>{
-    public Long countById(Integer id);
+public interface UserRepository extends JpaRepository<User, Long> {
+	@Query("SELECT u FROM User u WHERE u.email = ?1")
+	public User findByEmail(String email);
+	
 }

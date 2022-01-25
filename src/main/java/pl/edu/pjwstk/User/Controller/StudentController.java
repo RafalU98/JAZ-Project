@@ -7,59 +7,45 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.edu.pjwstk.User.Model.User;
+import pl.edu.pjwstk.User.Model.Student;
 import pl.edu.pjwstk.User.Security.UserNotFoundException;
-import pl.edu.pjwstk.User.Service.UserService;
+import pl.edu.pjwstk.User.Service.StudentService;
 
 import java.util.List;
 
 @Controller
 public class
-UserController {
+StudentController {
     @Autowired
-    private UserService userService;
+    private StudentService studentService;
 
     @GetMapping("/users")
     public String showUserList(Model model) {
-        List<User> listUsers = userService
+        List<Student> listStudents = studentService
                 .listAll();
-        model.addAttribute("listUsers", listUsers);
+        model.addAttribute("listStudents", listStudents);
 
         return "users";
     }
 
     @GetMapping("/users/new")
     public String showNewForm(Model model) {
-        model.addAttribute("users", new User());
-        model.addAttribute("pageTitle", "Add New User");
+        model.addAttribute("student", new Student());
+        model.addAttribute("pageTitle", "Add New Student");
         return "user_form";
     }
 
     @PostMapping("/users/save")
-    public String saveUser(User user, RedirectAttributes redirectAttributes) {
-        userService.save(user);
-        redirectAttributes.addFlashAttribute("message", "The User has been added to the List.");
+    public String saveUser(Student student, RedirectAttributes redirectAttributes) {
+        studentService.save(student);
+        redirectAttributes.addFlashAttribute("message", "The Student has been added to the List.");
         return "redirect:/users";
-    }
-
-    @GetMapping("/users/edit/{id}")
-    public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
-        try {
-            User user = userService.get(id);
-            model.addAttribute("users", user);
-            model.addAttribute("pageTitle", "Edit User (ID: " + id + ")");
-            return "user_form";
-        } catch (UserNotFoundException e) {
-            e.printStackTrace();
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
-            return "redirect:/users";
-        }
     }
 
     @GetMapping("/users/delete/{id}")
     public String showEditForm(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
-            userService.delete(id);
+            studentService.delete(id);
         } catch (UserNotFoundException e) {
             e.printStackTrace();
             redirectAttributes.addFlashAttribute("message", e.getMessage());
